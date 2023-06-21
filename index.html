@@ -1,3 +1,33 @@
+Skip to content
+Product
+Solutions
+Open Source
+Pricing
+Search
+Sign in
+Sign up
+OpenClassrooms-Student-Center
+/
+7697016-Front-End.1
+Public
+Code
+Issues
+2
+Pull requests
+17
+Actions
+Projects
+Security
+Insights
+7697016-Front-End.1/index.html
+@aurelien-oc-mentorship
+aurelien-oc-mentorship Exercice Solution
+Latest commit e68e5b2 on Oct 24, 2022
+ History
+ 1 contributor
+42 lines (39 sloc)  1.04 KB
+ 
+
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -15,26 +45,26 @@
 			<!-- Menu de recherche -->
 			<section class="filtres">
 				<h3>Filtres</h3>
-				<button class="btn-trier-croissant">Trier par prix croissant</button>
+				<button class="btn-trier">Trier par prix croissant</button>
 				<br>
-				<button class="btn-trier-decroissant">Trier par prix décroissant</button>
+				<button class="btn-filtrer">Filtrer les pièces non abordables</button>
 				<br>
-				<button class="btn-filtrer-abordables">Filtrer les pièces non abordables</button>
+				<button class="btn-decroissant">Trier par prix décroissant</button>
 				<br>
-				<button class="btn-filtrer-description">Filtrer les pièces sans description</button>
+				<button class="btn-nodesc">Filtrer les pièces sans description</button>
 				<br>
-				<p>Prix maximum</p>
-				<input type="range" id="prix-max" name="prix-max"
-				min="0" max="60" step="5">
+				<p>Prix maximum:</p>
+				<input type="range" name="prix-max" id="prix-max" min="0" max="60" step="5">
 			</section>
 
 			<!-- Fiches produits -->
 			<section class="fiches">
+				<!-- Code ajouté -->
 				<div class="abordables">
-					<p>Pièces abordables :</p>
+
 				</div>
 				<div class="disponibles">
-					<p>Pièces disponibles :</p>
+
 				</div>
 			</section>
 		</main>
