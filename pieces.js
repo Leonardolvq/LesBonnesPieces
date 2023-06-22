@@ -1,3 +1,5 @@
+//Import de la fonction du fichier avis.js //Pas compris pourquoi 
+import {ajoutListenersAvis} from "./avis.js";
 // Récupération des pièces depuis le fichier JSON
 const reponse = await fetch('pieces-autos.json');
 const pieces = await reponse.json();
@@ -40,6 +42,7 @@ function genererPieces(pieces){
         pieceElement.appendChild(avisBouton);
     
      }
+     ajoutListenersAvis();
 }
 
 genererPieces(pieces);
