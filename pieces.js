@@ -42,6 +42,7 @@ function genererPieces(pieces){
         pieceElement.appendChild(avisBouton);
     
      }
+     //Cette fonction ajoute des instructions à chaque bouton
      ajoutListenersAvis();
 }
 
