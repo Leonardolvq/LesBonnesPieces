@@ -1,9 +1,29 @@
 //Import de la fonction du fichier avis.js //Pas compris pourquoi 
-import {ajoutListenersAvis} from "./avis.js";
-// Récupération des pièces depuis le fichier JSON
+import {ajoutListenersAvis, ajoutListenerEnvoyerAvis, afficherAvis} from "./avis.js";
+/*
+Pour récupérer des pièces depuis le fichier JSON :
 const reponse = await fetch('pieces-autos.json');
-const pieces = await reponse.json();
+équivalent de la syntaxe await avec promises & then
+const pieces = await fetch("http://localhost:8081/pieces").then(pieces => pieces.json());
+*/
+let pieces = window.localStorage.getItem("pieces");
+    if (pieces === null)  {
+    //Récupération des pièces via API
+    const reponse = await fetch("http://localhost:8081/pieces");
+    //Extraction des données JSON converties en objet js
+    pieces = await reponse.json();
 
+    //Transformation des pièces en JSON
+    const valeurPieces = JSON.stringify(pieces);
+
+    //Stockage des informations dans le localStorage
+    window.localStorage.setItem("pieces", valeurPieces);
+} else {
+    //parse sert à convertir l'objet json en un objet js
+    pieces = JSON.parse(pieces);
+}
+//Fonction qui ajoute un Listener au formulaire
+ajoutListenerEnvoyerAvis();
 function genererPieces(pieces){
     for (let i = 0; i < pieces.length; i++) {
 
@@ -47,6 +67,17 @@ function genererPieces(pieces){
 }
 
 genererPieces(pieces);
+
+for(let i = O; i < pieces.length; i++) {
+    const id = pieces[i].id;
+    const avisJSON = window.localStorage.getItem (`avis-pieces-${id}`);
+    const avis = JSON.parse(avisJSON);
+
+    if(avis !== null){
+        const pieceElement = document.querySelector(`article[data-id="${id}"]`);
+        afficherAvis(pieceElement, avis)
+    }
+}
 
  //gestion des bouttons 
 const boutonTrier = document.querySelector(".btn-trier");
@@ -146,4 +177,9 @@ inputPrixMax.addEventListener('input', function(){
     });
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees);  
+})
+
+const boutonMettreAJour = document.querySelector("btn-maj");
+boutonDecroissant.addEventListener ("click", function () {
+    window.localStorage.removeItem("pieces")
 })
